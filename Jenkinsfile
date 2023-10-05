@@ -1,5 +1,12 @@
 pipeline {
-    agent any    
+    agent any
+
+     parameters {
+                choiceParam('ENV', ['dev', 'qa', 'int'], 'Description for choice parameter')
+                gitParameter(name: 'GIT_BRANCH_TAG', type: 'PT_BRANCH', branch: '*', defaultValue: '""', description: 'Git Parameter')  // Assuming you have Git Parameter plugin
+                booleanParam('RUN_TESTS', true, 'unit test')
+                booleanParam('SONAR_SCAN', false, 'sonar scan')
+            }
 
     stages {
         stage('Checkout') {
