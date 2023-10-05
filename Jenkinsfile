@@ -1,22 +1,17 @@
 pipeline {
-    agent any
-
-    parameters {
-        choice(name: 'DEPLOY_ENV', choices: ['Development', 'Staging', 'Production'], description: 'Select environment to deploy to')
-        string(name: 'GIT_BRANCH_TAG', defaultValue: 'master', description: 'Git branch or tag for deployment')
-    }
+    agent any    
 
     stages {
         stage('Checkout') {
             steps {
                 echo 'Checking out from Git...'
-                git credentialsId: 'git', url: 'https://github.com/Arunkm039/DevOpsTest.git'
+                git credentialsId: 'Github', url: 'https://github.com/Arunkm039/DevOpsTest.git'
             }
         }
 
         stage('Build') {
             steps {
-                echo "${params.DEPLOY_ENV}"
+                echo "${params.ENV}"
                 // Add your project build steps here. 
                 // Assuming a simple Node.js project for example:
             }
