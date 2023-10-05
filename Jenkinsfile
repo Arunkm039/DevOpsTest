@@ -11,7 +11,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo "${env.BRANCH_NAME}"
                 // Add your project build steps here. 
                 // Assuming a simple Node.js project for example:
                 
@@ -20,7 +20,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                echo "${env.BRANCH_NAME}"
                 // Here you would add your deployment code.
                 // For instance, a script to deploy to your server.
                 
