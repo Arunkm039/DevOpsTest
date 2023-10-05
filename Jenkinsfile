@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'ENV', defaultValue: 'Development', description: 'Environment to deploy to')
+        choice(name: 'DEPLOY_ENV', choices: ['Development', 'Staging', 'Production'], description: 'Select environment to deploy to')
         string(name: 'GIT_BRANCH_TAG', defaultValue: 'master', description: 'Git branch or tag for deployment')
     }
 
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "${params.ENV}"
+                echo "${params.DEPLOY_ENV}"
                 // Add your project build steps here. 
                 // Assuming a simple Node.js project for example:
             }
