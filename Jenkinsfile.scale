@@ -1,46 +1,17 @@
 pipeline {
     agent any
-    
+    parameters {        
+        string(name: 'DEPLOYMENT', description: 'Enter deployment (Refer to the description for the deployments per environment). Dev: [hotspot-api-dask-scheduler, hotspot-api-worker], QA: [hotspot-mq-scheduler, hotspot-mqworker-maxaccumulation], Int: [hotspot-mqworker-scenario, hotspot-mqworker-visualization]')
+        
+    }
     stages {
-        stage('Set Deployments') {
-            steps {
-                script {
-                    // Define deployments per environment
-                    def envDeployments = [
-                        'dev': [
-                            'hotspot-api-dask-dev-scheduler',
-                            'hotspot-api-dev-worker',
-                            'hotspot-backend-dev-manager',
-                            // ... add other dev deployments
-                        ],
-                        'qa': [
-                            'hotspot-mq-qa-scheduler',
-                            'hotspot-mqworker-qa-maxaccumulation',
-                            // ... add other qa deployments
-                        ],
-                        'int': [
-                            'hotspot-mqworker-int-scenario',
-                            'hotspot-mqworker-int-visualization',
-                            // ... add other int deployments
-                        ]
-                    ]
-                    
-                    // Set the deployments based on the chosen environment
-                    properties([
-                        parameters([
-                            choice(name: 'DEPLOYMENT', choices: envDeployments[params.ENV], description: 'Choose deployment to scale')
-                        ])
-                    ])
-                }
-            }
-        }
         stage('Scale Deployments') {
             steps {
                 script {
                     def replicas = (params.ACTION == 'Scale Up') ? params.REPLICAS : 0
 
                     echo "${params.ACTION} ${params.DEPLOYMENT} in ${params.ENV} environment to ${replicas} replicas..."
-                    
+                    sh "kubectl scale deployment ${params.DEPLOYMENT} --replicas=${replicas} --namespace=${params.NAMESPACE}"
                 }
             }
         }
