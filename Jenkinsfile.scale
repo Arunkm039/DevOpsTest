@@ -22,10 +22,7 @@ pipeline {
 
 pipeline {
     agent any
-    parameters {        
-        // This choice will be dynamically populated later based on the chosen environment       
-        
-    }
+    
     stages {
         stage('Set Deployments') {
             steps {
