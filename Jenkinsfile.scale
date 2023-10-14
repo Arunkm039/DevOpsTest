@@ -11,7 +11,7 @@ pipeline {
                     def replicas = (params.ACTION == 'Scale Up') ? params.REPLICAS : 0
 
                     echo "${params.ACTION} ${params.DEPLOYMENT} in ${params.ENV} environment to ${replicas} replicas..."
-                    sh "kubectl scale deployment ${params.DEPLOYMENT} --replicas=${replicas} --namespace=${params.NAMESPACE}"
+                    
                 }
             }
         }
