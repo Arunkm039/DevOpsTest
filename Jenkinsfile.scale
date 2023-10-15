@@ -21,38 +21,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Set Deployments') {
-            steps {
-                script {
-                    // Define deployments per environment
-                    def envDeployments = [
-                        'dev': [
-                            'hotspot-api-dask-scheduler',
-                            'hotspot-api-worker',
-                            'hotspot-backend-manager',
-                            // ... add other dev deployments
-                        ],
-                        'qa': [
-                            'hotspot-mq-scheduler',
-                            'hotspot-mqworker-maxaccumulation',
-                            // ... add other qa deployments
-                        ],
-                        'int': [
-                            'hotspot-mqworker-scenario',
-                            'hotspot-mqworker-visualization',
-                            // ... add other int deployments
-                        ]
-                    ]
-                    
-                    // Set the deployments based on the chosen environment
-                    properties([
-                        parameters([
-                            choice(name: 'DEPLOYMENT', choices: envDeployments[params.ENV], description: 'Choose deployment to scale')
-                        ])
-                    ])
-                }
-            }
-        }
+        
         stage('Scale Deployments') {
             steps {
                 script {
