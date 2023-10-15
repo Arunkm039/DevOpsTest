@@ -15,6 +15,7 @@ pipeline {
         }
     }
 }
+*/
 
 
 pipeline {
@@ -34,8 +35,8 @@ pipeline {
         }
     }
 }
-*/
 
+/*
 pipeline {
     agent any
     
@@ -60,3 +61,4 @@ pipeline {
         }
     }
 }
+*/
