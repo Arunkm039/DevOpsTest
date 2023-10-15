@@ -1,10 +1,7 @@
 /*
 pipeline {
     agent any
-    parameters {        
-        string(name: 'DEPLOYMENT', description: 'Enter deployment (Refer to the description for the deployments per environment). Dev: [hotspot-api-dask-scheduler, hotspot-api-worker], QA: [hotspot-mq-scheduler, hotspot-mqworker-maxaccumulation], Int: [hotspot-mqworker-scenario, hotspot-mqworker-visualization]')
-        
-    }
+    
     stages {
         stage('Scale Deployments') {
             steps {
