@@ -5,11 +5,12 @@ pipeline {
         stage('Retrieving and Scanning Images') {
             steps {
                 script {
+
+                    def dockerHubEndpoint = 'docker.io'
                     // Define your repositories
                     def repositories = [
-                        'repo1',
-                        'repo2',
-                        'repo3',
+                        'arunkm039/addbookapp',
+                        'arunkm039/addbook'                       
                         // ... add more repositories as needed
                     ]
 
@@ -17,7 +18,7 @@ pipeline {
                     repositories.each { repo ->
                         // Dynamically retrieve tags for the repository
                         def tags = sh(
-                            script: "skopeo list-tags docker://${SRC_REGISTRY}/${repo}",
+                            script: "skopeo list-tags docker://${dockerHubEndpoint}/${repo}",
                             returnStdout: true
                         ).trim().split('\n')
 
@@ -28,8 +29,8 @@ pipeline {
                             rm -rf container.tar
                             skopeo copy \
                             --insecure-policy \
-                            --src-creds "${SRC_CREDS}" \
-                            docker://${SRC_REGISTRY}/${repo}:${tag} \
+                            --src-creds "${Dockerhub}" \
+                            docker://${dockerHubEndpoint}/${repo}:${tag} \
                             docker-archive:./container.tar
                             '''
 
