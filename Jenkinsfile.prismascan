@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Retrieving and Scanning Images') {
+            steps {
+                script {
+                    // Define your repositories
+                    def repositories = [
+                        'repo1',
+                        'repo2',
+                        'repo3',
+                        // ... add more repositories as needed
+                    ]
+
+                    // Iterate over each repository
+                    repositories.each { repo ->
+                        // Dynamically retrieve tags for the repository
+                        def tags = sh(
+                            script: "skopeo list-tags docker://${SRC_REGISTRY}/${repo}",
+                            returnStdout: true
+                        ).trim().split('\n')
+
+                        // Iterate over each tag
+                        tags.each { tag ->
+                            // Retrieve the image
+                            sh '''
+                            rm -rf container.tar
+                            skopeo copy \
+                            --insecure-policy \
+                            --src-creds "${SRC_CREDS}" \
+                            docker://${SRC_REGISTRY}/${repo}:${tag} \
+                            docker-archive:./container.tar
+                            '''
+
+                            // Run security scan
+                            sh '''
+                            twistcli images scan \
+                            --address "https://prismacloud.console.url" \
+                            --user "${PRISMACLOUD_USER}" \
+                            --password "${PRISMACLOUD_PASS}" \
+                            --tarball container.tar
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
