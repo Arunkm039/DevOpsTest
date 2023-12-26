@@ -1,0 +1,64 @@
+/*
+pipeline {
+    agent any
+    
+    stages {
+        stage('Scale Deployments') {
+            steps {
+                script {
+                    def replicas = (params.ACTION == 'Scale Up') ? params.REPLICAS : 0
+
+                    echo "${params.ACTION} ${params.DEPLOYMENT} in ${params.ENV} environment to ${replicas} replicas..."
+                    
+                }
+            }
+        }
+    }
+}
+*/
+
+
+pipeline {
+    agent any
+    
+    stages {
+        
+        stage('Scale Deployments') {
+            steps {
+                script {
+                    def replicas = (params.ACTION == 'Scale Up') ? params.REPLICAS : 0
+
+                    echo "${params.ACTION} ${params.DEPLOYMENT} in ${params.ENV} environment to ${replicas} replicas..."
+                    
+                }
+            }
+        }
+    }
+}
+
+/*
+pipeline {
+    agent any
+    
+    stages {
+        stage('Scale Deployments') {
+            steps {
+                script {
+                    def deployment
+                    if (params.ENV == 'dev') {
+                        deployment = params.DEPLOYMENT_DEV
+                    } else if (params.ENV == 'qa') {
+                        deployment = params.DEPLOYMENT_QA
+                    } else if (params.ENV == 'int') {
+                        deployment = params.DEPLOYMENT_INT
+                    }
+
+                    def replicas = (params.ACTION == 'Scale Up') ? params.REPLICAS : 0
+
+                    echo "${params.ACTION} ${deployment} in ${params.ENV} environment to ${replicas} replicas..."
+                }
+            }
+        }
+    }
+}
+*/
