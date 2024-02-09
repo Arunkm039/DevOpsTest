@@ -13,14 +13,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo "${env.BRANCH_NAME}"
-                // Your actual build steps would go here
+
             }
         }
 
         stage('Deploy') {
             steps {
                 echo "${env.BRANCH_NAME}"
-                // Your actual deploy steps would go here
+
             }
         }
     }
