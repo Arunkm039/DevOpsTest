@@ -23,5 +23,16 @@ pipeline {
 
             }
         }
+
+        stage('List Env Variables') {
+            steps {
+                script {
+                    // Iterates over all environment variables and prints them
+                    env.each { key, value ->
+                        echo "${key}: ${value}"
+                    }
+                }
+            }
+        }
     }
 }
