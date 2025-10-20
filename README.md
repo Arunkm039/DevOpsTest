@@ -27,6 +27,7 @@ github-gist-api/
 ├── Dockerfile           # Docker image for API and tests
 └── docker-compose.yml   # Docker Compose orchestration
 
+```
 
 ---
 
