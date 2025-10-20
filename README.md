@@ -54,13 +54,13 @@ docker-compose up --build
 
 This will:
 
-*Build the Docker image from Dockerfile
+* Build the Docker image from Dockerfile
 
-*Start the Flask API (web) on http://localhost:8080
+* Start the Flask API (web) on http://localhost:8080
 
-*Run the automated test cases (test_runner) once and print results in logs
+* Run the automated test cases (test_runner) once and print results in logs
 
-*Keep the Flask API running regardless of test outcome
+* Keep the Flask API running regardless of test outcome
 
 
 
