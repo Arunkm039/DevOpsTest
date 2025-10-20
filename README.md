@@ -47,8 +47,8 @@ Ensure the following are installed:
 ```bash
 git clone https://your-repo-url/github-gist-api.git
 cd github-gist-api
-```
-Step 2: Build and Start Services
+
+### Step 2: Build and Start Services
 docker-compose up --build
 
 This will:
