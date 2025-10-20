@@ -50,7 +50,7 @@ cd github-gist-api
 ```
 
 ### Step 2: Build and Start Services
-** docker-compose up --build
+**docker-compose up --build**
 
 This will:
 
