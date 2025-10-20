@@ -35,6 +35,7 @@ github-gist-api/
 
 Ensure the following are installed:
 
+- [Python]
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/) (if not included with Docker)
 
