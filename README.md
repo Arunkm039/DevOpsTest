@@ -1,42 +1,25 @@
-# 🔧 GitHub Gist API Service
+# GitHub Gist API - Dockerized Flask App with Automated Tests
 
-A simple HTTP API built with Flask that fetches a user's public GitHub Gists. The service includes automated tests, pagination, optional caching, and Docker support.
+This project provides a Dockerized Flask-based API that fetches public gists from GitHub for a given user. It includes automated tests that validate the live API using Docker Compose.
 
 ---
 
-## 🚀 Features
+## 📦 Features
 
-- `GET /<username>` returns public Gists for a GitHub user.
-- Supports pagination: `?page=<num>&per_page=<num>`
-- In-memory caching using `lru_cache`
-- Automated testing using `pytest`
-- Dockerized setup for easy deployment
+- Flask API server exposed on **port 8080**
+- Endpoint: `GET /<username>?page=<int>&per_page=<int>`
+- Real-time testing of the live server via HTTP
+- Full setup using Docker and Docker Compose
+- Server continues running even if tests fail
 
 ---
 
 ## 🗂️ Project Structure
-.
-├── app.py # Flask API server
-├── test_app_pytest.py # API test suite using pytest
-├── Dockerfile # Docker configuration
-├── requirements.txt # Python dependencies (optional)
-└── README.md # You're here!
 
-
----
-
-## 🧰 Prerequisites
-
-- Python 3.8+
-- `pip` (Python package manager)
-- Docker (for containerized usage, optional)
-
----
-
-## 🧪 Running Locally
-
-### 1. Clone the repository
-
-```bash
-git clone <your-repo-url>
-cd <your-repo-folder>
+gist-api/
+│
+├── app.py # Flask web server
+├── test_app.py # Automated test cases
+├── requirements.txt # Python dependencies
+├── Dockerfile # Shared image for API and tests
+└── docker-compose.yml # Orchestration of services
