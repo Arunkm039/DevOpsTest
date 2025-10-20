@@ -62,6 +62,25 @@ This will:
 
 * Keep the Flask API running regardless of test outcome
 
+## API Usage
+
+Once running, try:
+
+curl http://localhost:8080/octocat
+
+You can also specify pagination:
+curl "http://localhost:8080/octocat?page=2&per_page=5"
+
+## How It Works
+
+* Dockerfile builds a Python 3.10 image with Flask and requests installed.
+
+* web service runs app.py and exposes port 8080
+
+* test_runner waits for web to start, then runs test_app.py using real HTTP requests to http://web:8080
+
+* Docker Compose handles inter-container networking (web is used as the hostname inside test_runner)
+
 
 
 
