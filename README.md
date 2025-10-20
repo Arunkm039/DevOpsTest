@@ -41,10 +41,10 @@ A simple HTTP API built with Flask that fetches a user's public GitHub Gists. Th
 git clone <your-repo-url>
 cd <your-repo-folder>
 
-2. Install dependencies
+### 2. Install dependencies
 pip install flask requests pytest
 
-3. Start the server
+### 3. Start the server
 python app.py
 
 The server will be available at:
