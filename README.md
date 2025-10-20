@@ -40,23 +40,3 @@ A simple HTTP API built with Flask that fetches a user's public GitHub Gists. Th
 ```bash
 git clone <your-repo-url>
 cd <your-repo-folder>
-
-### 2. Install dependencies
-pip install flask requests pytest
-
-### 3. Start the server
-python app.py
-
-The server will be available at:
-📍 http://localhost:8080
-
-Example Usage
-
-Fetch Gists for GitHub user octocat:
-
-GET http://localhost:8080/octocat
-
-
-With pagination:
-
-GET http://localhost:8080/octocat?page=2&per_page=5
