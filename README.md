@@ -17,10 +17,9 @@ This project provides a Dockerized Flask-based API that fetches public gists fro
 ## 🗂️ Project Structure
 
 github-gist-api/
-│
-├── app.py               # Flask web server
-├── test_app.py          # Automated test cases
-├── requirements.txt     # Python dependencies
-├── Dockerfile           # Docker image for API and tests
-└── docker-compose.yml   # Docker Compose orchestration
+ app.py               # Flask web server
+ test_app.py          # Automated test cases
+ requirements.txt     # Python dependencies
+ Dockerfile           # Docker image for API and tests
+ docker-compose.yml   # Docker Compose orchestration
 
