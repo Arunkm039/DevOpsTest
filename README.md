@@ -28,3 +28,24 @@ github-gist-api/
 └── docker-compose.yml   # Docker Compose orchestration
 
 
+---
+
+## ⚙️ Prerequisites
+
+Ensure the following are installed:
+
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/) (if not included with Docker)
+
+---
+
+## Quick Start
+
+### Step 1: Clone the Repo
+
+```bash
+git clone https://your-repo-url/github-gist-api.git
+cd github-gist-api
+
+
+
